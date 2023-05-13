@@ -1,6 +1,33 @@
+import axios from 'axios';
+import { useState } from 'react';
 import {Link as RouterLink } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 export default function Signup() {
+
+    const [name,setName] = useState<String>("")
+    const [email,setEmail] = useState<String>("")
+    const [password,setPassword] = useState<String>("")
+    const navigate = useNavigate()
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        let payload = {
+            name,
+            email,
+            password
+        }
+        axios.post(`http://localhost:8080/users/register`,payload)
+        .then((res)=>{
+            alert("Login Successfull")
+            navigate("/signin")
+        })
+        .catch((err)=>console.log(err))
+
+    }
+
+
+
     return (
         <div>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
@@ -12,7 +39,7 @@ export default function Signup() {
                     </a>
                 </div>
                 <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-                    <form>
+                    <form onSubmit={handleSubmit} >
                         <div>
                             <label
                                 htmlFor="name"
@@ -24,6 +51,7 @@ export default function Signup() {
                                 <input
                                     type="text"
                                     name="name"
+                                    onChange={(e)=>setName(e.target.value)}
                                     className="block w-full mt-1 border-gray-500 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
                             </div>
@@ -39,6 +67,7 @@ export default function Signup() {
                                 <input
                                     type="email"
                                     name="email"
+                                    onChange={(e)=>setEmail(e.target.value)}
                                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
                             </div>
@@ -54,21 +83,7 @@ export default function Signup() {
                                 <input
                                     type="password"
                                     name="password"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <label
-                                htmlFor="password_confirmation"
-                                className="block text-sm font-medium text-gray-700 undefined"
-                            >
-                                Confirm Password
-                            </label>
-                            <div className="flex flex-col items-start">
-                                <input
-                                    type="password"
-                                    name="password_confirmation"
+                                    onChange={(e)=>setPassword(e.target.value)}
                                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
                             </div>
@@ -80,7 +95,7 @@ export default function Signup() {
                             Forget Password?
                         </a>
                         <div className="flex items-center mt-4">
-                            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-300">
+                            <button type="submit" className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-300 focus:outline-none focus:bg-orange-300">
                                 Register
                             </button>
                         </div>
