@@ -23,8 +23,8 @@ export default function Homepagebody() {
     <>
    
     <div className='   flex flex-row justify-between '>
-        <div  >
-            <img className="w-[100px]" src="https://i.pinimg.com/236x/db/18/13/db1813d4ef2abb9de4e2d09f708c97dd.jpg"/></div>
+        <div className='w-[25%] shadow-[black]'  >
+            <img className="w-[100%] h-[100%] transition-transform  duration-500 transform hover:scale-125  " src="https://i.pinimg.com/736x/1f/c5/d3/1fc5d3dd32ec21e143949fffba4a9c76.jpg"/></div>
 
     <div  className='   w-[70%] '>
         <div className=' mt-100px'>
