@@ -1,15 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 
+
+import Footer from './components/Footer'
 import Homepage from './components/Homepage'
+
+
+import './index.css'
+import AllRoutes from './routes/AllRoutes'
 
 
 function App() {
 
 
   return (
-    <Homepage/>
+    <div>
+      <Homepage/>
+      <AllRoutes/>
+      <Footer/>
+    </div>
+    
+
   )
 }
 
