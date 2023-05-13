@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from "./images/logo.jpg"
-import Homepagebody from './Homepagebody'
+import { Link as RouterLink } from 'react-router-dom'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -14,6 +14,22 @@ const navigation = [
 
 export default function Homepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [flag,setFlag] = useState(false)
+
+  const token = localStorage.getItem('nutriUserToken')
+  const name = localStorage.getItem('username')
+
+  console.log(token)
+
+  const logout = ()=>{
+    console.log("click")
+    localStorage.setItem("nutriUserToken","")
+    localStorage.setItem("username","")
+    setFlag(!flag)
+  }
+
+
+  
 
   return (
   <>
@@ -26,7 +42,7 @@ export default function Homepage() {
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className='rounded-full  opacity-20' src={logo}/>
+              <RouterLink to='/' ><img className='rounded-full  opacity-20' src={logo}/></RouterLink>
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -47,9 +63,15 @@ export default function Homepage() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            <div className="text-sm font-semibold leading-6 text-gray-900">
+              {
+                token?(<div style={{cursor:'pointer'}} onClick={logout} >Welcome {name}</div>)
+                :
+                (<RouterLink to='signin' >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </RouterLink>)
+              }
+            </div>
           </div>
         </nav>
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -102,8 +124,6 @@ export default function Homepage() {
 
       
     </div>
-    
-    <Homepagebody/>
     
     
     </>

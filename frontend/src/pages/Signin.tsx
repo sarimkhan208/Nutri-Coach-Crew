@@ -8,6 +8,8 @@ export default function Signin() {
     const [email,setEmail] = useState<String>("")
     const [password,setPassword] = useState<String>("")
 
+    const navigate = useNavigate()
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         let payload = {
@@ -18,7 +20,9 @@ export default function Signin() {
         .then((res)=>{
             if(res.data.msg == 'Login Successful'){
                 alert("Login Successfull")
+                localStorage.setItem('username',res.data.user)
                 localStorage.setItem('nutriUserToken',res.data.token)
+                navigate("/dashboard")
             }else{
                 alert("Wrong Credentials")
             }
