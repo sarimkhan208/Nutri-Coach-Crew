@@ -19,7 +19,8 @@ export default function Signup() {
         }
         axios.post(`http://localhost:8080/users/register`,payload)
         .then((res)=>{
-            alert("Login Successfull")
+            console.log(res)
+            alert("Account created")
             navigate("/signin")
         })
         .catch((err)=>console.log(err))
