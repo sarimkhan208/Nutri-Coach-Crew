@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from "./images/logo.jpg"
+import logo from "./images/logo.png"
 import { Link as RouterLink } from 'react-router-dom'
 
 const navigation = [
@@ -42,7 +42,7 @@ export default function Homepage() {
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <RouterLink to='/' ><img className='rounded-full  opacity-20' src={logo}/></RouterLink>
+              <RouterLink to='/' ><img className='rounded-full w-[100px] opacity-20' src={logo}/></RouterLink>
             </a>
           </div>
           <div className="flex lg:hidden">

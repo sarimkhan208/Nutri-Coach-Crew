@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import {Link as RouterLink } from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
-
+import logo from "../components/images/logo.png"
 export default function Signup() {
 
     const [name,setName] = useState<String>("")
@@ -32,11 +32,9 @@ export default function Signup() {
     return (
         <div>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-                <div>
+                <div className='mt-[40px]'>
                     <a href="/">
-                        <h3 className="text-4xl font-bold text-orange-500">
-                            Logo
-                        </h3>
+                        <img className="rounded-full w-[150px]  opacity-25" src={logo}/>
                     </a>
                 </div>
                 <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
