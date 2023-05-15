@@ -28,9 +28,10 @@ export const Chat = ()=>{
 
     return (
 
-        <div className="App">
+        <div className="App" style={{display:'flex',justifyContent:'space-around'}} >
+            
             <div className="joinChatContainer">
-                <h3>FITNESS CLUB</h3>
+                
                 <input
                     type="text"
                     placeholder="Username..."
@@ -46,7 +47,9 @@ export const Chat = ()=>{
                 <button onClick={joinRoom}>Join A Room</button>
             </div>
 
-            <ChatPopup username={username} roomId={roomId} socket={socket} />
+            <div>
+                <ChatPopup username={username} roomId={roomId} socket={socket} />
+            </div>
     
         </div>
 

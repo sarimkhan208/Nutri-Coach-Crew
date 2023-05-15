@@ -46,7 +46,7 @@ export const ChatPopup = (props: MyComponentProps)=>{
     return (
         <div className='chat-window' >
             <div className='chat-header' >
-                <p>GROW UPP!</p>
+                <p>NUTRI FITNESS CLUB!</p>
             </div>
             <div className='chat-body' >
                 {
@@ -69,8 +69,8 @@ export const ChatPopup = (props: MyComponentProps)=>{
                 }
             </div>
             <div className='chat-footer' >
-                <input type='text' placeholder='hey...' onChange={(e)=>setCurrentMessage(e.target.value)} />
-                <button onClick={sendMessage} >send</button>
+                <input type='text' style={{border:'3px solid yellow'}} placeholder='hey...' onChange={(e)=>setCurrentMessage(e.target.value)} />
+                <button  style={{color:'white',backgroundColor:'green' , fontSize:'15px'}} onClick={sendMessage} >Send</button>
             </div>
         </div>
     )
